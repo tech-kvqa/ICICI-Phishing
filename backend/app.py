@@ -777,16 +777,16 @@ def send_email():
             msg.attach(img)
 
         try:
-            with smtplib.SMTP('smtp.gmail.com', 587) as server:
-                server.starttls()
-                server.login(from_email, password)
-                server.send_message(msg)
-            print(f"Email sent to {colleague.email}")
-            # with smtplib.SMTP('smtpout.secureserver.net', 587) as server:
+            # with smtplib.SMTP('smtp.gmail.com', 587) as server:
             #     server.starttls()
             #     server.login(from_email, password)
             #     server.send_message(msg)
             # print(f"Email sent to {colleague.email}")
+            with smtplib.SMTP('smtpout.secureserver.net', 587) as server:
+                server.starttls()
+                server.login(from_email, password)
+                server.send_message(msg)
+            print(f"Email sent to {colleague.email}")
 
             # with smtplib.SMTP('smtp.bizmail.yahoo.com', 587) as server:
             #     server.starttls()
