@@ -64,6 +64,8 @@ def create_database():
 
 def insert_dummy_data():
     colleagues_data = [
+        {"name": "Ishaan", "email": "ishan@accorppartners.com",
+            "department": "HR", "Designation": "Consultant"},
         {"name": "Alice Johnson", "email": "22dp1000105@ds.study.iitm.ac.in",
             "department": "IT", "designation": "Analyst"},
         {"name": "Anurag Kumar", "email": "akanuragkumar75@gmail.com",
@@ -74,36 +76,317 @@ def insert_dummy_data():
             "department": "Leadership", "designation": "CTO"},
         {"name": "Lav Kaushik", "email": "lav@kvqaindia.com",
             "department": "Leadership", "designation": "CEO"},
-        {"name": "Varun", "email": "2345varun@gmail.com",
-            "department": "Leadership", "designation": "CEO"},
-        {"name": "TRG", "email": "trg@kvqaindia.com",
-            "department": "Training", "designation": "Training Coordinator"},
-        {"name": "sales", "email": "sales1@kvqaindia.com",
-            "department": "Sales", "designation": "Sales Head"},
-        {"name": "NoidaISO", "email": "noidaiso22@gmail.com",
-            "department": "Noida", "designation": "Noida"},
-        {"name": "Ruby", "email": "ruby@kvqaindia.com",
-            "department": "IT", "designation": "IT Operations"},
-        {"name": "Babli", "email": "babli12@kvqaindia.com",
-            "department": "Sales", "designation": "Sales"},
-        {"name": "Shikha", "email": "shikha12@kvqaindia.com",
-            "department": "Operations", "designation": "Opeartion Head"},
-        {"name": "Kanchan", "email": "kanchan@kvqaindia.com",
-            "department": "Sales", "designation": "Sales"},
-        {"name": "Info", "email": "info@kvqaindia.com",
-            "department": "Operations", "designation": "Information Sharing"},
-        {"name": "Vaishali", "email": "vaishali@kvqaindia.com",
-            "department": "Certificate", "designation": "Certificate Head"},
-        {"name": "Neha", "email": "neha12@kvqaindia.com",
-            "department": "Sales", "designation": "Sales"},
-        {"name": "DHR", "email": "dhr@kvqaindia.com",
-            "department": "DHR", "designation": "DHR"},
-        {"name": "Delhi", "email": "delhi@kvqaindia.com",
-            "department": "Delhi", "designation": "Delhi"},
-        {"name": "Arun", "email": "arun.kvqa@gmail.com",
-            "department": "Leadership", "designation": "CFO"},
-        {"name": "OPS", "email": "ops@kvqaindia.com",
-            "department": "OPS", "designation": "OPS"},
+        # {"name": "Varun", "email": "2345varun@gmail.com",
+        #     "department": "Leadership", "designation": "CEO"},
+        # {"name": "TRG", "email": "trg@kvqaindia.com",
+        #     "department": "Training", "designation": "Training Coordinator"},
+        # {"name": "sales", "email": "sales1@kvqaindia.com",
+        #     "department": "Sales", "designation": "Sales Head"},
+        # {"name": "NoidaISO", "email": "noidaiso22@gmail.com",
+        #     "department": "Noida", "designation": "Noida"},
+        # {"name": "Ruby", "email": "ruby@kvqaindia.com",
+        #     "department": "IT", "designation": "IT Operations"},
+        # {"name": "Babli", "email": "babli12@kvqaindia.com",
+        #     "department": "Sales", "designation": "Sales"},
+        # {"name": "Shikha", "email": "shikha12@kvqaindia.com",
+        #     "department": "Operations", "designation": "Opeartion Head"},
+        # {"name": "Kanchan", "email": "kanchan@kvqaindia.com",
+        #     "department": "Sales", "designation": "Sales"},
+        # {"name": "Info", "email": "info@kvqaindia.com",
+        #     "department": "Operations", "designation": "Information Sharing"},
+        # {"name": "Vaishali", "email": "vaishali@kvqaindia.com",
+        #     "department": "Certificate", "designation": "Certificate Head"},
+        # {"name": "Neha", "email": "neha12@kvqaindia.com",
+        #     "department": "Sales", "designation": "Sales"},
+        # {"name": "DHR", "email": "dhr@kvqaindia.com",
+        #     "department": "DHR", "designation": "DHR"},
+        # {"name": "Delhi", "email": "delhi@kvqaindia.com",
+        #     "department": "Delhi", "designation": "Delhi"},
+        # {"name": "Arun", "email": "arun.kvqa@gmail.com",
+        #     "department": "Leadership", "designation": "CFO"},
+        # {"name": "OPS", "email": "ops@kvqaindia.com",
+        #     "department": "OPS", "designation": "OPS"},
+#         {'name': 'Aarsh Pardeshi', 'email': 'aarsh.pardeshi@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Aarshabh Gupta', 'email': 'aarshabh.gupta@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Abhijith Sinikumary', 'email': 'abhijith.sinikumary@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Abhishek Agrawal', 'email': 'abhishek.agrawal1@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Abhishek Sarfare', 'email': 'sarfare.abhishek@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Achal Mani', 'email': 'mani.achal@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Aditi Anand', 'email': 'aditi.anand@icicibank.com', 'department': 'BRAMPTON', 'designation': 'Banker'}
+# {'name': 'Aditya Dewadwal', 'email': 'aditya.dewadwal@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Aditya Jha', 'email': 'aditya.jha@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Aditya Raval', 'email': 'aditya.raval@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Aditya Vyas', 'email': 'aditya.vyas@ext.icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Adnan Khan', 'email': 'adnan.k@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Akanksha Manku', 'email': 'akanksha.manku@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Akshay Jaggi', 'email': 'akshay.jaggi1@icicibank.com', 'department': 'SCARBOROUGH', 'designation': 'Banker'}
+# {'name': 'Alexandrina S.A.', 'email': 'alexandrina.sa@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Alisha Mishra', 'email': 'alisha.mishra@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Aman Sehgal', 'email': 'aman.sehgal1@icicibank.com', 'department': 'BRAMPTON', 'designation': 'Banker'}
+# {'name': 'Amanjeet Gumber', 'email': 'amanjeet.gumber@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Amardeep Singh', 'email': 'amardeep.singh1@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Ambuj Kumar', 'email': 'ambuj.kumar4@icicibank.com', 'department': 'SCARBOROUGH', 'designation': 'Banker'}
+# {'name': 'Amit Ahuja', 'email': 'amit.ahuja@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Amit Chugh', 'email': 'amit.chugh@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Anita Sequeira', 'email': 'anita.seq@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Anjali A', 'email': 'anjali.a@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Anjali Deswal', 'email': 'anjali.deswal@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Ankit Juneja', 'email': 'ankit.juneja1@icicibank.com', 'department': 'BRAMPTON', 'designation': 'Banker'}
+# {'name': 'Ankit Manchanda', 'email': 'ankit.manchanda@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Ankita Vadodariya', 'email': 'ankita.vadodariya@icicibank.com', 'department': 'BRAMPTON', 'designation': 'Banker'}
+# {'name': 'Ankur Dadhich', 'email': 'ankur.dadhich@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Ankur Srivastava', 'email': 'ankur.shr@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Anthony Coulthard', 'email': 'anthony.coulthard@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Anupam Singh', 'email': 's.anupam@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Anurag Kumar', 'email': 'anurag.ku@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Anushka Sharma', 'email': 'anushka.sharma@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'April Harvey', 'email': 'april.harvey@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Archana Shukla', 'email': 'shukla.archana@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Arsh Seksaria', 'email': 'arsh.seksaria@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Aruna Boila', 'email': 'aruna.boila@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Arvind Sud', 'email': 'arvind.sud@icicibank.com', 'department': 'BRAMPTON', 'designation': 'Banker'}
+# {'name': 'Ashish Meena', 'email': 'ashish.meena@icicibank.com', 'department': 'BANGLRE', 'designation': 'Banker'}
+# {'name': 'Ashwaya Bhatia', 'email': 'ashwaya.bhatia@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Ashwin Paldano', 'email': 'paldano.ashwin@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Atharv Kale', 'email': 'kale.atharv@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Avneet Kaur', 'email': 'avneet.kaur3@icicibank.com', 'department': 'SCARBOROUGH', 'designation': 'Banker'}
+# {'name': 'Bernard Dias', 'email': 'bernard.dias@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Bharvi Parab', 'email': 'bharvi.parab@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Bhavya Singh', 'email': 'bhavya.singh1@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Bhupinder Singh', 'email': 'sing.bhupinder@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Bhushan Joshi', 'email': 'joshi.bhushan@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Boby Sharma', 'email': 'boby.sharma@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Cameron Ho', 'email': 'cameron.ho@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Charmi Desai', 'email': 'desai.charmi@icicibank.com', 'department': 'BRAMPTON', 'designation': 'Banker'}
+# {'name': 'Christie-ann D’souza', 'email': 'christieann.d@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Damini Gawali', 'email': 'damini.gawali@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Daniya Grover', 'email': 'grover.daniya@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Debasis Dash', 'email': 'debasis.dash1@icicibank.com', 'department': 'BSCO_366', 'designation': 'Banker'}
+# {'name': 'Deborah Adhikary', 'email': 'deborah.adhikary@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Deep Dalwadi', 'email': 'dalwadi.deep@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Deepa Mudgal', 'email': 'deepa.jambur@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Deepika Ghai', 'email': 'deepika.ghai1@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Deepshikha Mutha', 'email': 'deepshikha.mutha1@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Deepti Sebastian', 'email': 'sebastian.deepti@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Deepti Sharma', 'email': 'deepti.sharma2@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Devang Shukla', 'email': 'devang.shukla@ext.icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Dharminder Mariya', 'email': 'dharminder.mariya@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Dilpreet Bhatia', 'email': 'dilpreet.bhatia@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Dilpreet Kaur', 'email': 'dilpreet.kaur2@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Dimpal Luhana', 'email': 'dimpal.luhana@ext.icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Divya Saxena', 'email': 'divya.saxena@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Dixita Joshi', 'email': 'dixita.joshi@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Don Abraham', 'email': 'calipper.abraham@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Enrique Menacho', 'email': 'edwin.menacho@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Ganesh Ramachandran', 'email': 'ganesh.ramachandran@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Gaurav Jalan', 'email': 'gaurav.jalan1@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Gaurav Saklani', 'email': 'gaurav.saklani@icicibank.com', 'department': 'CALGARY', 'designation': 'Banker'}
+# {'name': 'Gaurav Tiwari', 'email': 'gaurav.ti@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Geet Deshpande', 'email': 'geet.deshpande@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Geetanjali Gadakh', 'email': 'geetanjali.gadakh@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Gunjan Mehra', 'email': 'gunjan.mehra@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Gurleen Shinh', 'email': 'kaur.shinh@icicibank.com', 'department': 'BRAMPTON', 'designation': 'Banker'}
+# {'name': 'Gursimran Singh', 'email': 'gursimran.si@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Harmanjeet Kaur', 'email': 'kaur.harmanjeet@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Harmanpreet Sandhu', 'email': 'singh.sandhu@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Harsh Sharma', 'email': 'hars.sha@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Harshpreet Singh', 'email': 'harshpreet.singh@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Harvinder Singh', 'email': 'harvinder.s@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Heena Rani', 'email': 'rani.heena@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Hemang Thanavala', 'email': 'hemang.thanavala@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Himanshu Sajlan', 'email': 'himanshu.sajlan@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Hitesh Sharma', 'email': 'hitesh.sharma5@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Hrishik Bhanushali', 'email': 'hrishik.bhanushali@icicibank.com', 'department': 'BSCO_366', 'designation': 'Banker'}
+# {'name': 'Iain Paulin', 'email': 'iain.paulin@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Inderjit Kaur', 'email': 'inderjit.kau@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Jagdeep Kaur', 'email': 'jagdeep.k@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Jaideep Chandok', 'email': 'jaideep.chandok@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Janki Gandhi', 'email': 'janki.gandhi@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Jasmeet Kaur', 'email': 'jasmeet.kaur5@icicibank.com', 'department': 'BRAMPTON', 'designation': 'Banker'}
+# {'name': 'Jaspreet Kaur', 'email': 'jaspreet.kaur5@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Jaspreet Kaur', 'email': 'kaur.jasp@icicibank.com', 'department': 'BRAMPTON', 'designation': 'Banker'}
+# {'name': 'Jay Manickam', 'email': 'jay.manickam@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Jeega Liu', 'email': 'jeega.liu@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Jie Zhou', 'email': 'jie.zhou@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Jigar Jain', 'email': 'jigarj.jain@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Jijo John', 'email': 'john.jijo@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Jingtong Yu', 'email': 'jingtong.yu@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Joycy Kovila', 'email': 'kovila.joycy@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Judith Sari', 'email': 'judith.sari@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Jyoti Arora', 'email': 'jyoti.arora2@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Kamalpreet Kaur', 'email': 'kaur.kama@icicibank.com', 'department': 'BRAMPTON', 'designation': 'Banker'}
+# {'name': 'Karamjeet Kaur', 'email': 'karamjeet.kaur2@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Karan Shah', 'email': 'shah.kara@icicibank.com', 'department': 'CALGARY', 'designation': 'Banker'}
+# {'name': 'Karish Gera', 'email': 'karish.gera@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Karrthik Kumhar', 'email': 'karrthik.kumhar@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Kartik Bhoyare', 'email': 'kartik.bhoyare@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Kavita Rao', 'email': 'kavita.rao1@icicibank.com', 'department': 'SCARBOROUGH', 'designation': 'Banker'}
+# {'name': 'Kavya Bhatt', 'email': 'bhatt.kavya@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Kavya Rastogi', 'email': 'kavya.rastogi@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Kawaljeet Kaur', 'email': 'kawaljeet.kaur2@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Kawaljit Kaur', 'email': 'kawaljit.kaur1@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Khaira Devinderpal', 'email': 'khaira.devinderpal@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Kishokanth Kanagaratnam', 'email': 'kishokanth.kanagaratnam@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Kishore Kumar', 'email': 'kishore.ku@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Komal Bhagchandani', 'email': 'komal.bhagchandani@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Kreetika Verma', 'email': 'kreetika.verma@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Krishnapriya P', 'email': 'krishnapriya.p@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Kush Prajapati', 'email': 'kush.prajapati@ext.icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Lakhbir Singh', 'email': 'lakhbir.singh1@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Lakshmi Ram', 'email': 'lakshmi.ram@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Lester Fernandes', 'email': 'lester.fernandes@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Lijeena Jamnas', 'email': 'lijeena.jamnas@icicibank.com', 'department': 'CALGARY', 'designation': 'Banker'}
+# {'name': 'Lionel Meunier', 'email': 'lionel.meunier@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': "Loveena D'cunha", 'email': 'loveena.dcunha@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Mahendar Kola', 'email': 'mahendar.ko@icicibank.com', 'department': 'SCARBOROUGH', 'designation': 'Banker'}
+# {'name': 'Mahesh Jhawar', 'email': 'mahesh.jhawar@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Malini Siva', 'email': 'malini.siva@icicibank.com', 'department': 'SCARBOROUGH', 'designation': 'Banker'}
+# {'name': 'Mandeep Sharma', 'email': 'sharma.mandeep@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Manhar Arora', 'email': 'manhar.arora@ext.icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Manish Bohra', 'email': 'manish.bohra1@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Manpreet Bhatia', 'email': 'singh.bhatia@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Manpreet Kaur', 'email': 'manpreet.kaur21@icicibank.com', 'department': 'BRAMPTON', 'designation': 'Banker'}
+# {'name': 'Manpreet Kaur', 'email': 'manpreet.kaur9@icicibank.com', 'department': 'SCARBOROUGH', 'designation': 'Banker'}
+# {'name': 'Manpreet Kaur', 'email': 'manpr.kau@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Manpreet Singh', 'email': 'manpreet.singh31@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Manpreet Wason', 'email': 'manpreet.wason@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Manseerat Kaur', 'email': 'manseerat.kaur@ext.icicibank.com', 'department': 'CALGARY', 'designation': 'Banker'}
+# {'name': 'Marilyn Li', 'email': 'marilyn.li@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Marlene Dsilva', 'email': 'marlene.dsilva@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Megha Hooda', 'email': 'hooda.megha@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Melvin Wong', 'email': 'wong.melvin@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Mohammed Hussain', 'email': 'mohammed.hussain@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Mohit Bhatia', 'email': 'mohit.bhatia@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Monisha Pinto', 'email': 'monisha.pinto@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Nachiket Patel', 'email': 'patel.nachiket@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Naman Bhargava', 'email': 'naman.bhargava@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Nandita Chhibbar', 'email': 'nandita.chhibbar@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Navneet Grover', 'email': 'grover.navneet@icicibank.com', 'department': 'BRAMPTON', 'designation': 'Banker'}
+# {'name': 'Navneet Kalra', 'email': 'navneet.kalra@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Navneet Kaur', 'email': 'navneet.kau@icicibank.com', 'department': 'BRAMPTON', 'designation': 'Banker'}
+# {'name': 'Neeraj Londhe', 'email': 'neeraj.londhe@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Neh Chhaya', 'email': 'neh.chhaya@ext.icicibank.com', 'department': 'CALGARY', 'designation': 'Banker'}
+# {'name': 'Neha Sharma', 'email': 'neha.sharma29@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Nikitaben Patel', 'email': 'nikitaben.patel1@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Nikki Bello', 'email': 'nikki.bello@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Nikunj Suneja', 'email': 'nikunj.suneja@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Niloy Nath', 'email': 'niloy.nath@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Nimit Soni', 'email': 'nimit.soni1@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Nishant Patel', 'email': 'nishant.patel@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Nithish Kolla', 'email': 'nithish.kolla@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Nurisha Kapoor', 'email': 'nurisha.kapoor@ext.icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Parag Chitnis', 'email': 'parag.chitnis@icicibank.com', 'department': 'SCARBOROUGH', 'designation': 'Banker'}
+# {'name': 'Parth Patel', 'email': 'parth.patel@ext.icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Pehal Chandnani', 'email': 'chandnani.pehal@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Prabhjot Kaur', 'email': 'prabhjot.kaur4@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Prachi Desai', 'email': 'prachi.desai2@ext.icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Prachi Shah', 'email': 'shah.pra@icicibank.com', 'department': 'BRAMPTON', 'designation': 'Banker'}
+# {'name': 'Prachi Singh', 'email': 'prachi.singh3@icicibank.com', 'department': 'SCARBOROUGH', 'designation': 'Banker'}
+# {'name': 'Prachi Vyas', 'email': 'prachi.vyas1@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Prachiti Sewalkar', 'email': 'sewalkar.prachiti@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Pradeep Sharma', 'email': 'pradeep.sharm@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Prafull Bhanushali', 'email': 'prafull.bhanushali@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Pranami Khaund', 'email': 'khaund.pranami@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Pranav Chadha', 'email': 'pranav.chadha@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Prasidhi Patel', 'email': 'prasidhi.patel@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Praveen Dumbre', 'email': 'praveen.dumbre@ext.icicibank.com', 'department': 'thane TCC', 'designation': 'Banker'}
+# {'name': 'Priya Bayangolkar', 'email': 'priya.bayangolkar@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Pulkit Sareen', 'email': 'pulkit.sareen@ext.icicibank.com', 'department': 'Surrey', 'designation': 'Banker'}
+# {'name': 'Rabinder Kaur', 'email': 'rabinder.kaur@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Raghavendra Shetty', 'email': 'raghavendra.shetty@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Rahul Bijalwan', 'email': 'rahul.bijalwan@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Rahul Jadhav', 'email': 'rahul.jadh@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Rahul Singh', 'email': 'rahul.singh52@icicibank.com', 'department': 'BRAMPTON', 'designation': 'Banker'}
+# {'name': 'Rajan Sharda', 'email': 'rajan.sharda@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Rajesh Nimgire', 'email': 'rajesh.nimgire@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Rajitha Kulangarath', 'email': 'rajitha.kulangarath@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Rakesh Kondoli', 'email': 'rakesh.kondoli@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Rakshanda Vimlesh', 'email': 'rakshanda.vimlesh@icicibank.com', 'department': 'BRAMPTON', 'designation': 'Banker'}
+# {'name': 'Ramandeep Singh', 'email': 'ramandeep.singh5@icicibank.com', 'department': 'BRAMPTON', 'designation': 'Banker'}
+# {'name': 'Ramanpreet Chanda', 'email': 'ramanpreet.chanda@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Ramarao Battula', 'email': 'ramarao.battula@ext.icicibank.com', 'department': 'thane TCC', 'designation': 'Banker'}
+# {'name': 'Rashi Chomal', 'email': 'rashi.chomal@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Raymond Lee', 'email': 'raymond.lee@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Reema Yasmeen', 'email': 'reema.y@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Rewati Tejwani', 'email': 'rewati.tejwani@ext.icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Rishi Chug', 'email': 'rishi.chug@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Rishi Gulati', 'email': 'rishi.gulati@icicibank.com', 'department': 'CALGARY', 'designation': 'Banker'}
+# {'name': 'Rishi Sharma', 'email': 'rishi.sharma3@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Ritesh Jha', 'email': 'jha.ritesh@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Ritesh Pungalia', 'email': 'ritesh.pungalia@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Ritu Sandhu', 'email': 'ritu.sandhu@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Rohit Kabra', 'email': 'rohit.kabra@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Rojina Sharma', 'email': 'rojina.sharma@icicibank.com', 'department': 'CALGARY', 'designation': 'Banker'}
+# {'name': 'Ruchika Tandon', 'email': 'ruchika.tandon@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Rupinder Kaur', 'email': 'kaur.rupi@icicibank.com', 'department': 'BRAMPTON', 'designation': 'Banker'}
+# {'name': 'Sachin Sharma', 'email': 'sachin.sharma23@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Sachin Yadav', 'email': 'sachin.ya@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Sagar Dhingra', 'email': 'sagar.dhingra@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Sagar Orum', 'email': 'orum.sagar@icicibank.com', 'department': 'SCARBOROUGH', 'designation': 'Banker'}
+# {'name': 'Sahil Panwar', 'email': 'sahil.panwar@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Saikat Mitra', 'email': 'saikat.mitra1@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Sainyam Kishnani', 'email': 'sainyam.kishnani@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Sakthishanmugham C', 'email': 'sakthishanmugham.c@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Saniya Fitter', 'email': 'fitter.saniya@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Sanket Shah', 'email': 'sanket.sh@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Santharam Varahabhotla', 'email': 'varahabhotla.santharam@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Sarabjeet Kaur', 'email': 'sarabjeet.kaur1@ext.icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Satinder Virk', 'email': 'virk.satinder@icicibank.com', 'department': 'BRAMPTON', 'designation': 'Banker'}
+# {'name': 'Saurin Shah', 'email': 'saurin.shah2@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Sayeed Babader', 'email': 'sayeed.babader@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Sehajpreet Singh', 'email': 'sehajpreet.singh@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Sehdev Chauhan', 'email': 'sehdev.singh@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Senthuran Kopalakrishnan', 'email': 'kopalakrishnan.senthuran@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Shaila Pinto', 'email': 'shaila.pinto@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Shalini Yadav', 'email': 'shalini.yadav2@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Shimoli Shah', 'email': 'shah.shimoli@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Shivani Rathore', 'email': 'shivani.rathore1@icicibank.com', 'department': 'BSCO_366', 'designation': 'Banker'}
+# {'name': 'Shobhit Bajpai', 'email': 'shobhit.bajpai@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Shreya Satra', 'email': 'shreya.satra@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Shubh Bagaria', 'email': 'shubh.bagaria@ext.icicibank.com', 'department': 'CALGARY', 'designation': 'Banker'}
+# {'name': 'Shubh Verma', 'email': 'shubh.verma@ext.icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Shubhpreet Sura', 'email': 'shubhpreet.sura@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Shweta Moghe', 'email': 'shweta.moghe@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Shweta Tiwari', 'email': 'shweta.ti@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Shyam Menon', 'email': 'shyam.menon@ext.icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Siddharth Kerwar', 'email': 'siddharth.kerwar@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Siddhartha Anand', 'email': 'siddhartha.anand@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Simardeep Kochhar', 'email': 'simardeep.kochhar@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Simranjeet Kaur', 'email': 'simranjeet.kaur8@icicibank.com', 'department': 'CALGARY', 'designation': 'Banker'}
+# {'name': 'Simranjeet Singh', 'email': 'singh.simra@icicibank.com', 'department': 'BRAMPTON', 'designation': 'Banker'}
+# {'name': 'Sukhpreet Kaur', 'email': 'sukhpreet.kaur1@icicibank.com', 'department': 'BRAMPTON', 'designation': 'Banker'}
+# {'name': 'Sulagna Batabyal', 'email': 'sulagna.batabyal@icicibank.com', 'department': 'SCARBOROUGH', 'designation': 'Banker'}
+# {'name': 'Sumit Dulloo', 'email': 'sumit.dulloo@ext.icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Surabhi Doshi', 'email': 'surabhi.doshi@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Swati Dubey', 'email': 'swati.du@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Syed Azgar', 'email': 'syed.azgar@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Tanveer Kaur', 'email': 'tanveer.kaur1@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Tejas Kakade', 'email': 'tejas.kakade@ext.icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Tova Blum', 'email': 'tova.blum@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Trupti Solanki', 'email': 'trupti.solanki1@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Tushar Kumar', 'email': 'tushar.kumar@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Vaishali Vaishali', 'email': 'vaishali.vaishali1@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Valeny Rodrigues', 'email': 'valeny.rodrigues1@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Vatsal Vithalani', 'email': 'vithalani.vatsal@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Versha Kaul', 'email': 'versha.kaul@icicibank.com', 'department': 'BSCO_366', 'designation': 'Banker'}
+# {'name': 'Vidhi Udeshi', 'email': 'vidhi.udeshi@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Vidyavati Gore', 'email': 'vidyavati.gore@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Vikas Jindal', 'email': 'vikas.jin@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Vinita Kavarana', 'email': 'vinita.kavarana@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Viraj Hegde', 'email': 'viraj.hegde@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Virpal Kaur', 'email': 'virpal.kaur@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Vishnu Paranandi', 'email': 'priya.paranandi@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Vishruti Patel', 'email': 'vishruti.patel@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Vivek Joshi', 'email': 'vivek.joshi2@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Vivek Upreti', 'email': 'vivek.upreti@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Vivian Varghese', 'email': 'varghese.vivian@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Xavier Sebastian', 'email': 'sebastian.xavier@icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Yannish Khanna', 'email': 'yannish.khanna@ext.icicibank.com', 'department': 'TORONTO', 'designation': 'Banker'}
+# {'name': 'Yash Sharma', 'email': 'yash.sharma6@icicibank.com', 'department': '', 'designation': 'Banker'}
+# {'name': 'Zaira Hasan', 'email': 'zaira.hasan@ext.icicibank.com', 'department': 'Surrey', 'designation': 'Banker'}
+
+
+
 #         {'name': 'Aarsh Pardeshi     /COMP/IBANK/TORONTO ', 'email': 'aarsh.pardeshi@icicibank.com', 'department': 'Bank', 'designation': 'Banker'},
 # {'name': ' Aarshabh Gupta     /CBGCA/IBANK/TORONTO ', 'email': 'aarshabh.gupta@icicibank.com', 'department': 'Bank', 'designation': 'Banker'},
 # {'name': ' Abhijith Sinikumary     /CANRETAIL/IBANK/TORONTO ', 'email': 'abhijith.sinikumary@icicibank.com', 'department': 'Bank', 'designation': 'Banker'},
@@ -753,6 +1036,8 @@ def send_email():
         body = body.replace("{{action_link}}", tracking_link)
         body = body.replace("{{action_name}}", action_name)
         body = body.replace("{{email_subject}}", email_subject)
+        body = body.replace("{{department}}", colleague.department)
+
 
         html_content = f"""
         <html>
@@ -777,16 +1062,16 @@ def send_email():
             msg.attach(img)
 
         try:
-            # with smtplib.SMTP('smtp.gmail.com', 587) as server:
-            #     server.starttls()
-            #     server.login(from_email, password)
-            #     server.send_message(msg)
-            # print(f"Email sent to {colleague.email}")
-            with smtplib.SMTP('smtpout.secureserver.net', 587) as server:
+            with smtplib.SMTP('smtp.gmail.com', 587) as server:
                 server.starttls()
                 server.login(from_email, password)
                 server.send_message(msg)
             print(f"Email sent to {colleague.email}")
+            # with smtplib.SMTP('smtpout.secureserver.net', 587) as server:
+            #     server.starttls()
+            #     server.login(from_email, password)
+            #     server.send_message(msg)
+            # print(f"Email sent to {colleague.email}")
 
             # with smtplib.SMTP('smtp.bizmail.yahoo.com', 587) as server:
             #     server.starttls()
@@ -804,7 +1089,7 @@ def send_email():
                 designation=colleague.designation
             )
             db.session.add(emailed_candidate)
-            time.sleep(1)
+            time.sleep(2)
             print("Emailed candidates list after sending:", emailed_candidates)
 
         except Exception as e:
