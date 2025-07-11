@@ -27,6 +27,7 @@ import matplotlib.pyplot as plt
 import base64
 from weasyprint import HTML
 from sqlalchemy import func
+import time
 
 load_dotenv()
 
@@ -803,6 +804,7 @@ def send_email():
                 designation=colleague.designation
             )
             db.session.add(emailed_candidate)
+            time.sleep(1)
             print("Emailed candidates list after sending:", emailed_candidates)
 
         except Exception as e:
