@@ -1840,12 +1840,18 @@ def generate_styled_report():
             'completion_date': report.completion_date.strftime('%Y-%m-%d') if report.completion_date else '-'
         })
 
+    company_logo_path = os.path.abspath(os.path.join('static', 'Xploit2Secure.png'))
+    company_logo_path = company_logo_path.replace('\\', '/')
+    company_logo_url = f'file:///{company_logo_path}'
+    print(f"Company logo absolute file URL: {company_logo_url}")
+
     # ✅ Render HTML template with summary, charts, and reports
     rendered_html = render_template(
         'phishing_report.html',
         summary=summary,
         charts=charts,
-        reports=candidate_reports
+        reports=candidate_reports,
+        logo_path=company_logo_url
     )
 
     # ✅ Convert HTML to PDF
