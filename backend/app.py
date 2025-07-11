@@ -1685,37 +1685,148 @@ def generate_pie_chart(data, labels, colors):
     img_base64 = base64.b64encode(buffer.read()).decode('utf-8')
     return img_base64
 
+# @app.route('/generate_reports_pdf')
+# def generate_styled_report():
+#     reports = Reports.query.all()
+#     total_recipients = EmailedCandidate.query.count()
+#     fail_count = Reports.query.filter_by(clicked=True).count()
+#     did_not_click_count = total_recipients - fail_count
+#     pass_count = len(reports) - fail_count
+#     clicked_only = Reports.query.filter(Reports.clicked == True, Reports.answered == False).count()
+#     clicked_and_answered = Reports.query.filter(Reports.clicked == True, Reports.answered == True).count()
+#     repeat_offender = db.session.query(Reports.colleague_id).filter_by(clicked=True).group_by(Reports.colleague_id).having(func.count(Reports.id) > 1).count()
+
+#     summary = [
+#         {'label': 'Total Recipients (Emailed)', 'value': total_recipients},
+#         {'label': 'Fail', 'value': fail_count},
+#         {'label': 'Pass', 'value': pass_count},
+#         {'label': 'Clicked Only', 'value': clicked_only},
+#         {'label': 'Clicked & Submitted Data', 'value': clicked_and_answered},
+#         {'label': 'Repeat Offender', 'value': repeat_offender}
+#     ]
+
+#     # 3 charts: Pass/Fail, Clicked vs Not, Clicked Only vs Clicked&Submitted
+#     chart1 = generate_pie_chart([fail_count, pass_count], ['Fail', 'Pass'], ['#e74c3c', '#2ecc71'])
+#     chart2 = generate_pie_chart([clicked_only, clicked_and_answered], ['Clicked Only', 'Clicked & Submitted'], ['#f39c12', '#3498db'])
+#     # chart3 = generate_pie_chart([len(reports) - fail_count, fail_count], ['Did Not Click', 'Clicked'], ['#2ecc71', '#e74c3c'])
+#     chart3 = generate_pie_chart(
+#         [did_not_click_count, fail_count],
+#         ['Did Not Click', 'Clicked'],
+#         ['#2ecc71', '#e74c3c']
+#     )
+#     charts = [chart1, chart2, chart3]
+
+#     candidate_reports = []
+#     for report in reports:
+#         colleague = Colleagues.query.get(report.colleague_id)
+#         candidate_reports.append({
+#             'id': report.id,
+#             'name': colleague.name if colleague else 'Unknown',
+#             'clicked': 'Yes' if report.clicked else 'No',
+#             'answered': 'Yes' if report.answered else 'No',
+#             'score': f"{report.score}%" if report.score else '0%',
+#             'status': report.status,
+#             'completion_date': report.completion_date.strftime('%Y-%m-%d') if report.completion_date else '-'
+#         })
+
+#     company_logo_path = os.path.abspath(os.path.join('static', 'Xploit2Secure.png'))
+#     company_logo_path = company_logo_path.replace('\\', '/')
+#     company_logo_url = f'file:///{company_logo_path}'
+#     print(f"Company logo absolute file URL: {company_logo_url}")
+#     rendered_html = render_template(
+#         'phishing_report.html',
+#         summary=summary,
+#         charts=charts,
+#         reports=candidate_reports,
+#         company_logo=company_logo_url
+#     )
+
+#     # pdf = HTML(string=rendered_html).write_pdf()
+#     pdf = HTML(string=rendered_html, base_url=os.path.abspath(".")).write_pdf()
+#     response = make_response(pdf)
+#     response.headers['Content-Type'] = 'application/pdf'
+#     response.headers['Content-Disposition'] = 'inline; filename=styled_report.pdf'
+#     return response
+
 @app.route('/generate_reports_pdf')
 def generate_styled_report():
-    reports = Reports.query.all()
-    total_recipients = EmailedCandidate.query.count()
-    fail_count = Reports.query.filter_by(clicked=True).count()
-    did_not_click_count = total_recipients - fail_count
-    pass_count = len(reports) - fail_count
-    clicked_only = Reports.query.filter(Reports.clicked == True, Reports.answered == False).count()
-    clicked_and_answered = Reports.query.filter(Reports.clicked == True, Reports.answered == True).count()
-    repeat_offender = db.session.query(Reports.colleague_id).filter_by(clicked=True).group_by(Reports.colleague_id).having(func.count(Reports.id) > 1).count()
+    from sqlalchemy import or_, and_
 
+    # Total number of candidates emailed
+    total_recipients = EmailedCandidate.query.count()
+
+    # Fetch all reports
+    reports = Reports.query.all()
+
+    # Number of people who clicked the link
+    click_count = Reports.query.filter_by(clicked=True).count()
+
+    # Number of people who did not click
+    not_clicked_count = total_recipients - click_count
+
+    # ✅ Chart 1: Of those who clicked — Pass (Completed + Score ≥ 60) vs Fail/Pending
+    pass_count = Reports.query.filter(
+        Reports.clicked == True,
+        Reports.answered == True,
+        Reports.status == 'Completed',
+        Reports.score >= 60
+    ).count()
+
+    fail_pending_count = Reports.query.filter(
+        Reports.clicked == True
+    ).filter(
+        or_(
+            Reports.status == 'Pending',
+            and_(Reports.status == 'Completed', Reports.score < 60)
+        )
+    ).count()
+
+    chart1 = generate_pie_chart(
+        [pass_count, fail_pending_count],
+        ['Pass (Score ≥ 60%)', 'Fail/Pending'],
+        ['#2ecc71', '#e74c3c']
+    )
+
+    # ✅ Chart 2: Clicked & Submitted vs Clicked Only (regardless of score)
+    clicked_and_answered = Reports.query.filter(Reports.clicked == True, Reports.answered == True).count()
+    clicked_only = Reports.query.filter(Reports.clicked == True, Reports.answered == False).count()
+
+    chart2 = generate_pie_chart(
+        [clicked_only, clicked_and_answered],
+        ['Clicked Only', 'Clicked & Submitted'],
+        ['#f39c12', '#3498db']
+    )
+
+    # ✅ Chart 3: Out of total emailed — Did Not Click vs Clicked
+    chart3 = generate_pie_chart(
+        [not_clicked_count, click_count],
+        ['Did Not Click', 'Clicked'],
+        ['#2ecc71', '#e74c3c']
+    )
+
+    charts = [chart1, chart2, chart3]
+
+    # ✅ Repeat offenders — those who clicked multiple times
+    repeat_offender = (
+        db.session.query(Reports.colleague_id)
+        .filter_by(clicked=True)
+        .group_by(Reports.colleague_id)
+        .having(func.count(Reports.id) > 1)
+        .count()
+    )
+
+    # ✅ Summary Data for report header
     summary = [
         {'label': 'Total Recipients (Emailed)', 'value': total_recipients},
-        {'label': 'Fail', 'value': fail_count},
-        {'label': 'Pass', 'value': pass_count},
+        {'label': 'Clicked', 'value': click_count},
+        {'label': 'Pass (Score ≥ 60%)', 'value': pass_count},
+        {'label': 'Fail/Pending', 'value': fail_pending_count},
         {'label': 'Clicked Only', 'value': clicked_only},
         {'label': 'Clicked & Submitted Data', 'value': clicked_and_answered},
         {'label': 'Repeat Offender', 'value': repeat_offender}
     ]
 
-    # 3 charts: Pass/Fail, Clicked vs Not, Clicked Only vs Clicked&Submitted
-    chart1 = generate_pie_chart([fail_count, pass_count], ['Fail', 'Pass'], ['#e74c3c', '#2ecc71'])
-    chart2 = generate_pie_chart([clicked_only, clicked_and_answered], ['Clicked Only', 'Clicked & Submitted'], ['#f39c12', '#3498db'])
-    # chart3 = generate_pie_chart([len(reports) - fail_count, fail_count], ['Did Not Click', 'Clicked'], ['#2ecc71', '#e74c3c'])
-    chart3 = generate_pie_chart(
-        [did_not_click_count, fail_count],
-        ['Did Not Click', 'Clicked'],
-        ['#2ecc71', '#e74c3c']
-    )
-    charts = [chart1, chart2, chart3]
-
+    # ✅ Candidate-wise detailed report
     candidate_reports = []
     for report in reports:
         colleague = Colleagues.query.get(report.colleague_id)
@@ -1729,20 +1840,18 @@ def generate_styled_report():
             'completion_date': report.completion_date.strftime('%Y-%m-%d') if report.completion_date else '-'
         })
 
-    company_logo_path = os.path.abspath(os.path.join('static', 'Xploit2Secure.png'))
-    company_logo_path = company_logo_path.replace('\\', '/')
-    company_logo_url = f'file:///{company_logo_path}'
-    print(f"Company logo absolute file URL: {company_logo_url}")
+    # ✅ Render HTML template with summary, charts, and reports
     rendered_html = render_template(
         'phishing_report.html',
         summary=summary,
         charts=charts,
-        reports=candidate_reports,
-        company_logo=company_logo_url
+        reports=candidate_reports
     )
 
-    # pdf = HTML(string=rendered_html).write_pdf()
-    pdf = HTML(string=rendered_html, base_url=os.path.abspath(".")).write_pdf()
+    # ✅ Convert HTML to PDF
+    pdf = HTML(string=rendered_html).write_pdf()
+
+    # ✅ Return PDF as inline response
     response = make_response(pdf)
     response.headers['Content-Type'] = 'application/pdf'
     response.headers['Content-Disposition'] = 'inline; filename=styled_report.pdf'
