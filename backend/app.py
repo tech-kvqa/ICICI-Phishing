@@ -1114,6 +1114,9 @@ def send_email():
             tracking_link = f"https://icici-phishing.onrender.com/phish_intermediate/{colleague.id}"
             body = email_template.replace("{{recipient_name}}", colleague.name)
             body = body.replace("{{action_link}}", tracking_link)
+            body = body.replace("{{action_name}}", action_name)
+            body = body.replace("{{email_subject}}", email_subject)
+            body = body.replace("{{department}}", colleague.department)
 
             html_content = f"<html><body>{body}</body></html>"
             msg.attach(MIMEText(html_content, 'html'))
