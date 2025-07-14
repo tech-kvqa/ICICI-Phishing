@@ -1118,6 +1118,8 @@ def send_email():
             body = body.replace("{{email_subject}}", email_subject)
             body = body.replace("{{department}}", colleague.department)
 
+            print(f"Generated tracking link for {colleague.name}: {tracking_link}")
+
             html_content = f"<html><body>{body}</body></html>"
             msg.attach(MIMEText(html_content, 'html'))
 
@@ -1141,7 +1143,7 @@ def send_email():
         server.quit()
 
     except Exception as e:
-        print(f"Failed: {str(e)}")
+        print(f"Failed to send email to {colleague.email}: {str(e)}")
 
     db.session.commit()
     return jsonify({'message': 'Emails sent.'})
