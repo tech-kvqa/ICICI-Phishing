@@ -1016,88 +1016,132 @@ def send_email():
     from_email = os.getenv('Email_Username')
     password = os.getenv('Password')
 
-    for colleague in colleagues:
-        # tracking_link = f"https://phishing-mail-application.onrender.com/phishing_test/{colleague.id}"
-        # tracking_link = f"https://phishing-mail-frontend.vercel.app/phishing_test/{colleague.id}"
-        # tracking_link = f"http://localhost:8080/phishing_test/{colleague.id}"
-        tracking_link = f"https://icici-phishing.onrender.com/phish_intermediate/{colleague.id}"
-        # tracking_link = f"https://phishing-application-demo.vercel.app/phishing_test/{colleague.id}"
-        # tracking_link = f"http://localhost:8080/phishing_test/{colleague.id}"
+    # for colleague in colleagues:
+    #     # tracking_link = f"https://phishing-mail-application.onrender.com/phishing_test/{colleague.id}"
+    #     # tracking_link = f"https://phishing-mail-frontend.vercel.app/phishing_test/{colleague.id}"
+    #     # tracking_link = f"http://localhost:8080/phishing_test/{colleague.id}"
+    #     tracking_link = f"https://icici-phishing.onrender.com/phish_intermediate/{colleague.id}"
+    #     # tracking_link = f"https://phishing-application-demo.vercel.app/phishing_test/{colleague.id}"
+    #     # tracking_link = f"http://localhost:8080/phishing_test/{colleague.id}"
 
-        print(f"Generated tracking link for {colleague.name}: {tracking_link}")
+    #     print(f"Generated tracking link for {colleague.name}: {tracking_link}")
 
-        to_email = colleague.email
-        msg = MIMEMultipart('related')
-        msg['Subject'] = email_subject
-        msg['From'] = from_email
-        msg['To'] = to_email
+    #     to_email = colleague.email
+    #     msg = MIMEMultipart('related')
+    #     msg['Subject'] = email_subject
+    #     msg['From'] = from_email
+    #     msg['To'] = to_email
 
-        body = email_template.replace("{{recipient_name}}", colleague.name)
-        body = body.replace("{{action_link}}", tracking_link)
-        body = body.replace("{{action_name}}", action_name)
-        body = body.replace("{{email_subject}}", email_subject)
-        body = body.replace("{{department}}", colleague.department)
+    #     body = email_template.replace("{{recipient_name}}", colleague.name)
+    #     body = body.replace("{{action_link}}", tracking_link)
+    #     body = body.replace("{{action_name}}", action_name)
+    #     body = body.replace("{{email_subject}}", email_subject)
+    #     body = body.replace("{{department}}", colleague.department)
 
 
-        html_content = f"""
-        <html>
-            <body>
-                {body}
-            </body>
-        </html>
-        """
-        msg.attach(MIMEText(html_content, 'html'))
+    #     html_content = f"""
+    #     <html>
+    #         <body>
+    #             {body}
+    #         </body>
+    #     </html>
+    #     """
+    #     msg.attach(MIMEText(html_content, 'html'))
 
-        # signature_image_path = os.path.join('templates', 'Capture.JPG')
-        # with open(signature_image_path, 'rb') as img_file:
-        #     img = MIMEImage(img_file.read())
-        #     img.add_header('Content-ID', '<signature_image>')
-        #     msg.attach(img)
+    #     # signature_image_path = os.path.join('templates', 'Capture.JPG')
+    #     # with open(signature_image_path, 'rb') as img_file:
+    #     #     img = MIMEImage(img_file.read())
+    #     #     img.add_header('Content-ID', '<signature_image>')
+    #     #     msg.attach(img)
 
-        # Attach logo image
-        logo_image_path = os.path.join(templates_dir, 'Icici Bank.png')
-        with open(logo_image_path, 'rb') as img_file:
-            img = MIMEImage(img_file.read())
-            img.add_header('Content-ID', '<logo_image>')
-            msg.attach(img)
+    #     # Attach logo image
+    #     logo_image_path = os.path.join(templates_dir, 'Icici Bank.png')
+    #     with open(logo_image_path, 'rb') as img_file:
+    #         img = MIMEImage(img_file.read())
+    #         img.add_header('Content-ID', '<logo_image>')
+    #         msg.attach(img)
 
-        try:
-            with smtplib.SMTP('smtp.gmail.com', 587) as server:
-                server.starttls()
-                server.login(from_email, password)
-                server.send_message(msg)
-            print(f"Email sent to {colleague.email}")
-            # with smtplib.SMTP('smtpout.secureserver.net', 587) as server:
-            #     server.starttls()
-            #     server.login(from_email, password)
-            #     server.send_message(msg)
-            # print(f"Email sent to {colleague.email}")
+    #     try:
+    #         with smtplib.SMTP('smtp.gmail.com', 587) as server:
+    #             server.starttls()
+    #             server.login(from_email, password)
+    #             server.send_message(msg)
+    #         print(f"Email sent to {colleague.email}")
+    #         # with smtplib.SMTP('smtpout.secureserver.net', 587) as server:
+    #         #     server.starttls()
+    #         #     server.login(from_email, password)
+    #         #     server.send_message(msg)
+    #         # print(f"Email sent to {colleague.email}")
 
-            # with smtplib.SMTP('smtp.bizmail.yahoo.com', 587) as server:
-            #     server.starttls()
-            #     server.login(from_email, password)
-            #     server.send_message(msg)
-            # print(f"Email sent to {colleague.email}")
+    #         # with smtplib.SMTP('smtp.bizmail.yahoo.com', 587) as server:
+    #         #     server.starttls()
+    #         #     server.login(from_email, password)
+    #         #     server.send_message(msg)
+    #         # print(f"Email sent to {colleague.email}")
 
-            # emailed_candidates.append({
-            #     'name': colleague.name,
-            #     'email': colleague.email,
-            #     'designation': colleague.designation
+    #         # emailed_candidates.append({
+    #         #     'name': colleague.name,
+    #         #     'email': colleague.email,
+    #         #     'designation': colleague.designation
+    #         emailed_candidate = EmailedCandidate(
+    #             name=colleague.name,
+    #             email=colleague.email,
+    #             designation=colleague.designation
+    #         )
+    #         db.session.add(emailed_candidate)
+    #         time.sleep(2)
+    #         print("Emailed candidates list after sending:", emailed_candidates)
+
+    #     except Exception as e:
+    #         print(f"Failed to send email to {colleague.email}: {str(e)}")
+    
+    # db.session.commit()
+
+    # return jsonify({'message': 'Phishing emails sent to colleagues.'})
+
+    try:
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()
+        server.login(from_email, password)
+
+        for colleague in colleagues:
+            # Build email message
+            msg = MIMEMultipart('related')
+            msg['Subject'] = email_subject
+            msg['From'] = from_email
+            msg['To'] = colleague.email
+
+            tracking_link = f"https://icici-phishing.onrender.com/phish_intermediate/{colleague.id}"
+            body = email_template.replace("{{recipient_name}}", colleague.name)
+            body = body.replace("{{action_link}}", tracking_link)
+
+            html_content = f"<html><body>{body}</body></html>"
+            msg.attach(MIMEText(html_content, 'html'))
+
+            logo_image_path = os.path.join(templates_dir, 'Icici Bank.png')
+            with open(logo_image_path, 'rb') as img_file:
+                img = MIMEImage(img_file.read())
+                img.add_header('Content-ID', '<logo_image>')
+                msg.attach(img)
+
+            server.send_message(msg)
+
             emailed_candidate = EmailedCandidate(
                 name=colleague.name,
                 email=colleague.email,
                 designation=colleague.designation
             )
             db.session.add(emailed_candidate)
-            time.sleep(2)
-            print("Emailed candidates list after sending:", emailed_candidates)
 
-        except Exception as e:
-            print(f"Failed to send email to {colleague.email}: {str(e)}")
-    
+            time.sleep(2)  # Optional: reduce sleep to 0.5s since single connection is more efficient
+
+        server.quit()
+
+    except Exception as e:
+        print(f"Failed: {str(e)}")
+
     db.session.commit()
-
-    return jsonify({'message': 'Phishing emails sent to colleagues.'})
+    return jsonify({'message': 'Emails sent.'})
 
 
 @app.route('/phishing_test/<int:colleague_id>', methods=['GET'])
