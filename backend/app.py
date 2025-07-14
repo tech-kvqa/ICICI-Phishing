@@ -64,8 +64,8 @@ def create_database():
 
 def insert_dummy_data():
     colleagues_data = [
-        {"name": "Ishaan", "email": "ishan@accorppartners.com",
-            "department": "HR", "designation": "Consultant"},
+        # {"name": "Ishaan", "email": "ishan@accorppartners.com",
+        #     "department": "HR", "designation": "Consultant"},
         {"name": "Alice Johnson", "email": "22dp1000105@ds.study.iitm.ac.in",
             "department": "IT", "designation": "Analyst"},
         {"name": "Anurag Kumar", "email": "akanuragkumar75@gmail.com",
