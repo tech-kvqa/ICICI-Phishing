@@ -845,11 +845,11 @@ def send_email():
             html_content = f"<html><body>{body}</body></html>"
             msg.attach(MIMEText(html_content, 'html'))
 
-            logo_image_path = os.path.join(templates_dir, 'Icici Bank.png')
-            with open(logo_image_path, 'rb') as img_file:
-                img = MIMEImage(img_file.read())
-                img.add_header('Content-ID', '<logo_image>')
-                msg.attach(img)
+            # logo_image_path = os.path.join(templates_dir, 'Icici Bank.png')
+            # with open(logo_image_path, 'rb') as img_file:
+            #     img = MIMEImage(img_file.read())
+            #     img.add_header('Content-ID', '<logo_image>')
+            #     msg.attach(img)
 
             server.send_message(msg)
 
